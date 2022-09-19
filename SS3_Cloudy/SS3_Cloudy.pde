@@ -1,4 +1,4 @@
-//cloudy by Marlen Xique
+//Cloudy by Marlen Xique
 //the apple doesnt fall far from the tree, especially this one.
 //hold mouse button on the tree's leaves to watch the apple fall.
 //you can also watch the clouds come and go
