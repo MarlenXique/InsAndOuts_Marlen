@@ -7,7 +7,7 @@ PImage player_run1;
 
 int player = 0;
 int xPlayer = 10;
-int playerSpeed = 10;
+int playerSpeed = 5;
 
 PImage enemy;
 
