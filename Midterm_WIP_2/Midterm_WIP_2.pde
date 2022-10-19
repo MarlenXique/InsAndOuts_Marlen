@@ -18,6 +18,9 @@ float xEnemy;
 float easing = 0.05;
 int pos;
 
+int shellRadius = 50;
+int playerRadius = 75;
+
 int scene = 1;                 
 int lives= 5;                  
 boolean lost= false;
@@ -43,7 +46,7 @@ void draw(){
   noStroke();  
   rect(0, height/2 + 100, 1440, 255);
   
-  shell.resize(50 ,0);
+  shell.resize(shellRadius, 0);
   enemy.resize(100, 0);  
   
    if(scene == 1){
@@ -67,11 +70,15 @@ void draw(){
       Enemy();
 
       image(enemy, xEnemy, 100);  
-      image(run[player], xPlayer, yPlayer, 75, 75);
+      image(run[player], xPlayer, yPlayer, playerRadius,playerRadius);
+      
       playerRun();
+      Shell();
       
       textSize(30);
-      text("lives = " + lives, width - 110,50);      
+      text("lives = " + lives, width - 110, 50); 
+      
+      Overlap();
     }
   }
 
@@ -79,6 +86,15 @@ void  Enemy(){
   float dx = xPlayer - xEnemy;
   xEnemy += dx * easing;
   
+  image(shell, xShell, yShell);
+  xShell = xEnemy;
+  yShell  = yShell +1;
+  
+    if (yShell > height-230){
+      yShell = 0;    
+    } 
+}
+void Shell(){
   image(shell, xShell, yShell);
   xShell = xEnemy;
   yShell  = yShell +1;
@@ -112,6 +128,17 @@ void  Enemy(){
   }
    }
  }
+ 
+ void Overlap(){ 
+   if((xShell > xPlayer && xShell < xPlayer + playerRadius || xPlayer > xShell && xPlayer < xShell + shellRadius) && (yShell > yPlayer && yShell < yPlayer + playerRadius || yPlayer > yShell && yPlayer < yShell + shellRadius)){
+    
+    lives = lives - 1 ; 
+      if (lives == 0){
+        lives = 5; 
+  
+       }
+    }   
+   }
  
  void keyPressed(){
   if(key == '1'){
