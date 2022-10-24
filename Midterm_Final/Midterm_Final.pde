@@ -5,7 +5,7 @@
 //if you lose press 1 to go back to instructions 
 //or 2 to restart game
 //if you press 1 at any time of the game you will go back to instructions
-//and lives will go restart at 5
+
 
 void setup(){
   size(1080, 700);
