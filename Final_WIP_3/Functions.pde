@@ -99,4 +99,12 @@ void checkingPort(){
   myPort = new Serial(this, portName, 9600);
   
 }
+
+void timer(){
+  m = millis()/1000;
+  if (m > timer1) {
+    scene = 3;
+}
+  
+}
  

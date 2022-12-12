@@ -54,7 +54,7 @@ void draw(){
   }
       println(val1);
       fill(255);
-      ellipse(mouseX, mouseY, val1/2, val1/2);
+      ellipse(mouseX, mouseY, val1, val1);
  
 
    if(scene == 1){
@@ -78,12 +78,30 @@ void draw(){
       image(run[player], xPlayer, yPlayer, playerRadius,playerRadius);
       
       playerRun();
+      timer();
       bat();
       
       textSize(30);
       text("lives = " + lives, width - 110, 50); 
+      text(m, width - 110, 100);
       Overlap();
 
+    }
+    else if(scene == 3){
+      fill(#d4e8c3);
+     stroke(#202924);
+     strokeWeight(30);
+     rect(width/2 - 300, height/2 - 250, 600, 500);
+     
+     fill(0);
+     textSize(50);
+     text(winnerTitle, width/2 - 280, height/2 - 150);
+     
+     fill(#803028);
+     textSize(30);
+     text(winner,width/2 - 280, height/2 - 100, 500, 500);
+   
+      
     }
   }
  
@@ -97,10 +115,7 @@ void draw(){
       loop(); 
     }
   }
-  else if(key == '2'){
-    
-      
-    
+  else if(key == '2'){    
     scene = 2;
     //flashlight();
     //wingsSound.loop();

@@ -24,6 +24,10 @@ float cloudRespawn;
 float dirX;
 float dirY;
 
+
+int m; 
+int timer1= 10000;
+
 int player = 0;
 int xPlayer = 500;
 int yPlayer = height/2 +400;
@@ -44,3 +48,5 @@ boolean gameOver = false;
 String gameOverText= "Click 2 to restart or 1 to go back to instructions";
 String title= "BOO!";
 String start = "How to play: Move the Player around using arrow keys and run away from bats. You have 3 lives, everytime you get hit by a bat- you lose a life. Press 2 to continue";
+String winnerTitle = "WOHOO you won!";
+String winner = "Congrats! You won against the Evil Bats! Press 1 to go back to Menu, or 2 to play again!";
