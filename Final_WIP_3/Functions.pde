@@ -64,8 +64,6 @@ void bat(){
      ybat = yEnemy;
      fill(255, 0, 0);
      lives = lives - 1 ;
-
-     
       
       if (lives == 0){
         fill(#d4e8c3);
@@ -85,9 +83,7 @@ void bat(){
    && (ybat > mouseY && ybat < mouseY + val1 
    || mouseY > ybat && mouseY < ybat + batRadius)){
      ybat = yEnemy;
-   }
-
-   
+   }   
  }
 
 
@@ -100,15 +96,12 @@ void checkingPort(){
   
 }
 
+//-------------------timer----------
 void milli(){
   int m = millis() - restartTimer;
   text(m/1000, width - 110, 100);
   if(m > timer){
     scene = 3;
-    restartTimer = millis();
-    
-}
-}
-  
-
- 
+    restartTimer = millis();    
+  }
+} 

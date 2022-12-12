@@ -42,6 +42,7 @@ void draw(){
   cloud2.resize(150, 0);
   tree.resize(200, 0);
   bush.resize(100, 0);
+  
   backgroundFeatures();
   
   if(myPort.available()> 0){
@@ -50,8 +51,7 @@ void draw(){
       println(val1);
       fill(255);
       ellipse(mouseX, mouseY, val1, val1);
- 
-
+      
    if(scene == 1){
  
      fill(#d4e8c3);
@@ -77,10 +77,8 @@ void draw(){
       bat();
       
       textSize(30);
-      text("lives = " + lives, width - 110, 50); 
-      
+      text("lives = " + lives, width - 110, 50);       
       Overlap();
-
     }
     else if(scene == 3){
      fill(#d4e8c3);
@@ -96,13 +94,11 @@ void draw(){
      textSize(30);
      text(winner,width/2 - 280, height/2 - 100, 500, 500);      
     }
-  }
- 
+  } 
  void keyPressed(){
   if(key == '1'){
     scene = 1;
     if(gameOver == true){
-
       lives = 3;
       gameOver = false;
       loop(); 
@@ -110,7 +106,6 @@ void draw(){
   }
   else if(key == '2'){    
     scene = 2;
-
     //flashlight();
     //wingsSound.loop();
     if(gameOver == true){
