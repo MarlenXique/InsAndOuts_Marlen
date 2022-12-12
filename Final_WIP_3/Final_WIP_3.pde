@@ -6,6 +6,10 @@
 //or 2 to restart game
 //if you press 1 at any time of the game you will go back to instructions
 
+//LED after collision, 
+//piezo when game starts, 
+//flashlight transperancy 
+
 
 void setup(){
   size(1080, 700);
@@ -49,10 +53,17 @@ void draw(){
     val1 = myPort.read();
   }
       println(val1);
+      fill(255);
+      ellipse(mouseX, mouseY, val1, val1);
 
-  fill(255);
-  ellipse(mouseX, mouseY, val1, val1);
+text ("dimmer", width/4, height/2);
+  text ("brighter", width-width/4, height/2);
 
+  //mouse location controls communication to Serial 
+  val2= int (map (mouseX, 0, width, 0, 255)); //remaps mouseX to 0-255
+  myPort.write(val2); 
+  println(val2);
+  
 
    if(scene == 1){
  

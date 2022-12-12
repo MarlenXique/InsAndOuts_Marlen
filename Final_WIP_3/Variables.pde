@@ -36,6 +36,7 @@ int playerRadius = 75;
 int scene = 1;                 
 int lives= 3;
 int val1 = 0; //pot
+int val2 = 0; //led1
 
 
 boolean gameOver = false;

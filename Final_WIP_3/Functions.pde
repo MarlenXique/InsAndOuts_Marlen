@@ -88,20 +88,4 @@ void checkingPort(){
   myPort = new Serial(this, portName, 9600);
   
 }
-   
  
-   
- //-----------flashlight--------
- void flashlight(){
-  // dirX = (mouseX / width - 0.5) * 2;
-  // dirY = (mouseY / height - 0.5) * 2;
-  
-  //directionalLight(250, 250, 250, -dirX, -dirY, -1);
-  
-  //noStroke();
-  //sphere(40);
-}
- 
- 
-
-   
