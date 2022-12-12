@@ -100,11 +100,15 @@ void checkingPort(){
   
 }
 
-void timer(){
-  m = millis()/1000;
-  if (m > timer1) {
+void milli(){
+  int m = millis() - restartTimer;
+  text(m/1000, width - 110, 100);
+  if(m > timer){
     scene = 3;
+    restartTimer = millis();
+    
+}
 }
   
-}
+
  

@@ -23,10 +23,9 @@ float cloudRespawn;
 
 float dirX;
 float dirY;
-
-
-int m; 
-int timer1= 10000;
+ 
+int restartTimer;
+int timer= 10000;
 
 int player = 0;
 int xPlayer = 500;
@@ -41,7 +40,6 @@ int scene = 1;
 int lives= 3;
 int val1 = 0; //pot
 int val2 = 0; //led1
-
 
 boolean gameOver = false;
 

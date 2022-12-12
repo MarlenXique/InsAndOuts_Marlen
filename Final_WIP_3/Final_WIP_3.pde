@@ -6,10 +6,6 @@
 //or 2 to restart game
 //if you press 1 at any time of the game you will go back to instructions
 
-//LED after collision, 
-//piezo when game starts, 
-//flashlight transperancy 
-
 
 void setup(){
   size(1080, 700);
@@ -18,6 +14,7 @@ void setup(){
   rectMode(CORNER);
   frameRate(40);
   
+  restartTimer = millis();
   checkingPort();
 
   bat = loadImage("bat.png");
@@ -31,8 +28,6 @@ void setup(){
 
 void draw(){ 
   background(0); 
-
-  
   fill(#3f593f);
   noStroke();  
   rect(0, height/2 + 100, 1440, 255);
@@ -78,17 +73,17 @@ void draw(){
       image(run[player], xPlayer, yPlayer, playerRadius,playerRadius);
       
       playerRun();
-      timer();
+      milli();
       bat();
       
       textSize(30);
       text("lives = " + lives, width - 110, 50); 
-      text(m, width - 110, 100);
+      
       Overlap();
 
     }
     else if(scene == 3){
-      fill(#d4e8c3);
+     fill(#d4e8c3);
      stroke(#202924);
      strokeWeight(30);
      rect(width/2 - 300, height/2 - 250, 600, 500);
@@ -99,9 +94,7 @@ void draw(){
      
      fill(#803028);
      textSize(30);
-     text(winner,width/2 - 280, height/2 - 100, 500, 500);
-   
-      
+     text(winner,width/2 - 280, height/2 - 100, 500, 500);      
     }
   }
  
@@ -117,6 +110,7 @@ void draw(){
   }
   else if(key == '2'){    
     scene = 2;
+
     //flashlight();
     //wingsSound.loop();
     if(gameOver == true){
