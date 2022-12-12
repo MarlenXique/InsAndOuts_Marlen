@@ -54,16 +54,8 @@ void draw(){
   }
       println(val1);
       fill(255);
-      ellipse(mouseX, mouseY, val1, val1);
-
-text ("dimmer", width/4, height/2);
-  text ("brighter", width-width/4, height/2);
-
-  //mouse location controls communication to Serial 
-  val2= int (map (mouseX, 0, width, 0, 255)); //remaps mouseX to 0-255
-  myPort.write(val2); 
-  println(val2);
-  
+      ellipse(mouseX, mouseY, val1/2, val1/2);
+ 
 
    if(scene == 1){
  
@@ -114,7 +106,7 @@ text ("dimmer", width/4, height/2);
     //wingsSound.loop();
     if(gameOver == true){
       //wingsSound.stop();
-      lives = 5;
+      lives = 3;
       gameOver = false;
       loop();     
     }

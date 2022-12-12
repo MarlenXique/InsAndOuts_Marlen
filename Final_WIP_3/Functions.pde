@@ -57,7 +57,10 @@ void bat(){
 
 //-----------if bat collides with player-------------
  void Overlap(){
-   if((xbat > xPlayer && xbat < xPlayer + playerRadius || xPlayer > xbat && xPlayer < xbat + batRadius) && (ybat > yPlayer && ybat < yPlayer + playerRadius || yPlayer > ybat && yPlayer < ybat + batRadius)){
+   if((xbat > xPlayer && xbat < xPlayer + playerRadius 
+   || xPlayer > xbat && xPlayer < xbat + batRadius) 
+   && (ybat > yPlayer && ybat < yPlayer + playerRadius 
+   || yPlayer > ybat && yPlayer < ybat + batRadius)){
      ybat = yEnemy;
      fill(255, 0, 0);
      lives = lives - 1 ;
@@ -77,6 +80,14 @@ void bat(){
         gameOver = true;  
        }
    }
+   if((xbat > mouseX && xbat < mouseX + val1 
+   || mouseX > xbat && mouseX < xbat + batRadius) 
+   && (ybat > mouseY && ybat < mouseY + val1 
+   || mouseY > ybat && mouseY < ybat + batRadius)){
+     ybat = yEnemy;
+   }
+
+   
  }
 
 
