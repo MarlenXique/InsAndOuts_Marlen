@@ -157,9 +157,29 @@ void loop() {
 
   if (Serial.available()) { // If data is available to read
     LED1val = Serial.read(); // read it and store it in val
+    char val = Serial.read();
   }
   analogWrite(LED1, LED1val);
   delay(10); // Wait 10 milliseconds
+
+    if(val == 'A'){
+    digitalWrite(LED1, HIGH);
+  }
+  if(val == 'a'){
+    digitalWrite(LED1, LOW);
+  }
+  if(val == 'B'){
+    digitalWrite(LED2, HIGH);
+  }
+  if(val == 'b'){
+    digitalWrite(LED2, LOW);
+  }
+  if(val == 'C'){
+    digitalWrite(LED3, HIGH);
+  }
+  if(val == 'c'){
+    digitalWrite(LED3, LOW);
+   }
 }
   
 

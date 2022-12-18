@@ -2,6 +2,7 @@ import processing.sound.*;
 import processing.serial.*;
 
 Serial myPort;
+
 SoundFile wingsSound;
 SoundFile running;
 

@@ -64,8 +64,29 @@ void bat(){
      ybat = yEnemy;
      fill(255, 0, 0);
      lives = lives - 1 ;
+     
+      if(lives == 3){
+        myPort.write('A');
+        myPort.write('B');
+        myPort.write('C');
+      }
       
+       if(lives == 2){
+        myPort.write('a');
+        myPort.write('B');
+        myPort.write('C');
+      }
+      
+      if(lives == 1){
+        myPort.write('a');
+        myPort.write('b');
+        myPort.write('C');
+      }
+    
       if (lives == 0){
+        myPort.write('a');
+        myPort.write('b');
+        myPort.write('c');
         fill(#d4e8c3);
         stroke(#202924);
         strokeWeight(10);
@@ -105,3 +126,25 @@ void milli(){
     restartTimer = millis();    
   }
 } 
+
+void keyPressed(){
+  if(key == '1'){
+    scene = 1;
+    if(gameOver == true){
+      lives = 3;
+      gameOver = false;
+      loop(); 
+    }
+  }
+  else if(key == '2'){    
+    scene = 2;
+    //flashlight();
+    //wingsSound.loop();
+    if(gameOver == true){
+      //wingsSound.stop();
+      lives = 3;
+      gameOver = false;
+      loop();     
+    }
+  }
+}

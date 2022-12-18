@@ -45,12 +45,12 @@ void draw(){
   
   backgroundFeatures();
   
-  if(myPort.available()> 0){
-    val1 = myPort.read();
-  }
-      println(val1);
-      fill(255);
-      ellipse(mouseX, mouseY, val1, val1);
+  //if(myPort.available()> 0){
+  //  val1 = myPort.read();
+  //}
+  //    println(val1);
+  //    fill(255);
+  //    ellipse(mouseX, mouseY, val1, val1);
       
    if(scene == 1){
  
@@ -95,24 +95,4 @@ void draw(){
      text(winner,width/2 - 280, height/2 - 100, 500, 500);      
     }
   } 
- void keyPressed(){
-  if(key == '1'){
-    scene = 1;
-    if(gameOver == true){
-      lives = 3;
-      gameOver = false;
-      loop(); 
-    }
-  }
-  else if(key == '2'){    
-    scene = 2;
-    //flashlight();
-    //wingsSound.loop();
-    if(gameOver == true){
-      //wingsSound.stop();
-      lives = 3;
-      gameOver = false;
-      loop();     
-    }
-  }
-}
+ 
