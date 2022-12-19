@@ -90,19 +90,9 @@
 #define REST 0
 // tetris musc CREDITS: https://github.com/robsoncouto/arduino-songs/blob/master/tetris/tetris.ino
 
-byte val;
-byte LED1val;
-const int LED1 = 13;
-const int LED2 = 12;
-const int LED3 = 11;
-const int buzzer  = 3; //piezo
-const int SENSOR  = A0; //potentiometer
-
-int sensorVal = 0;
-int ledVal = 0;
 int tempo=144; 
-
 int melody[] = {
+  
 //Based on the arrangement at https://www.flutetunes.com/tunes.php?id=192
   NOTE_E5, 4,  NOTE_B4,8,  NOTE_C5,8,  NOTE_D5,4,  NOTE_C5,8,  NOTE_B4,8,
   NOTE_A4, 4,  NOTE_A4,8,  NOTE_C5,8,  NOTE_E5,4,  NOTE_D5,8,  NOTE_C5,8,
@@ -129,64 +119,52 @@ int melody[] = {
   NOTE_C5,4,   NOTE_E5,4,  NOTE_A5,2,
   NOTE_GS5,2,
 };
-int notes=sizeof(melody)/sizeof(melody[0])/2; 
-// this calculates the duration of a whole note in ms (60s/tempo)*4 beats
+int notes=sizeof(melody)/sizeof(melody[0])/2; // this calculates the duration of a whole note in ms (60s/tempo)*4 beats
 int wholenote = (60000 * 4) / tempo;
 int divider = 0, noteDuration = 0;
 
-void setup() {
-  
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-  pinMode(LED3, OUTPUT);
+int led1 = 13;
+int led2 = 12;
+int led3 = 11;
+int sensor = A0;
+int sensorOutput; 
 
-  pinMode(SENSOR, INPUT);
+const int buzzer  = 3;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led2, OUTPUT);
   Serial.begin(9600);
 
-  
 }
 
 void loop() {
-  //tetris();
-  sensorVal = analogRead(SENSOR); //read sensor and assign to variable called Sesorval
-  sensorVal = sensorVal/4;
-  
-  delay(50);
+  tetris();
+sensorOutput= analogRead(sensor);
+  int mappedOutput = map(sensorOutput, 0, 1023, 0, 255);
 
-  Serial.write(sensorVal);
+  Serial.println(mappedOutput);
+  if(Serial.available() > 0){
+    char state = Serial.read();
+    if(state == '1'){
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, HIGH);
+    }
+    if(state == '0'){
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
 
-  if (Serial.available()) { // If data is available to read
-    LED1val = Serial.read(); // read it and store it in val
-    char val = Serial.read();
+    }
   }
-  analogWrite(LED1, LED1val);
-  delay(10); // Wait 10 milliseconds
-
-    if(val == 'A'){
-    digitalWrite(LED1, HIGH);
-  }
-  if(val == 'a'){
-    digitalWrite(LED1, LOW);
-  }
-  if(val == 'B'){
-    digitalWrite(LED2, HIGH);
-  }
-  if(val == 'b'){
-    digitalWrite(LED2, LOW);
-  }
-  if(val == 'C'){
-    digitalWrite(LED3, HIGH);
-  }
-  if(val == 'c'){
-    digitalWrite(LED3, LOW);
-   }
 }
   
 
 
-
-
-//tetrissss
+//tetris
 
 void tetris(){
   for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {

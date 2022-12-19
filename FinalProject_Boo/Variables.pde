@@ -21,13 +21,13 @@ float xEnemy;
 float yEnemy = 0;
 float easing = 0.05;
 float cloudRespawn;
+float val1;
 
 float dirX;
 float dirY;
  
 int restartTimer;
-int timer= 60000;
-
+int timer= 10000;  //60000 for min
 int player = 0;
 int xPlayer = 500;
 int yPlayer = height/2 +400;
@@ -35,12 +35,11 @@ int playerSpeed = 5;
 int direction;
 int pos;
 int batRadius = 50;
-int batSpeed = 4;
+int batSpeed = 10;
 int playerRadius = 75;
 int scene = 1;                 
 int lives= 3;
-int val1 = 0; //pot
-int val2 = 0; //led1?
+int score= 0;
 
 boolean gameOver = false;
 

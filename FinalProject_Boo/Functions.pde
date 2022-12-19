@@ -25,6 +25,9 @@ void bat(){
       
    } 
  }
+ 
+ 
+ 
 
 //---------player----------
 
@@ -64,29 +67,8 @@ void bat(){
      ybat = yEnemy;
      fill(255, 0, 0);
      lives = lives - 1 ;
-     
-      if(lives == 3){
-        myPort.write('A');
-        myPort.write('B');
-        myPort.write('C');
-      }
-      
-       if(lives == 2){
-        myPort.write('a');
-        myPort.write('B');
-        myPort.write('C');
-      }
-      
-      if(lives == 1){
-        myPort.write('a');
-        myPort.write('b');
-        myPort.write('C');
-      }
     
       if (lives == 0){
-        myPort.write('a');
-        myPort.write('b');
-        myPort.write('c');
         fill(#d4e8c3);
         stroke(#202924);
         strokeWeight(10);
@@ -104,23 +86,15 @@ void bat(){
    && (ybat > mouseY && ybat < mouseY + val1 
    || mouseY > ybat && mouseY < ybat + batRadius)){
      ybat = yEnemy;
+     fill(255, 0, 0);
+     score = score + 1 ;
    }   
  }
-
-
-//----------------processing serial-----
-void checkingPort(){
-  String[] portList = Serial.list();
-  printArray(portList);
-  String portName = Serial.list()[2];
-  myPort = new Serial(this, portName, 9600);
-  
-}
 
 //-------------------timer----------
 void milli(){
   int m = millis() - restartTimer;
-  text(m/1000, width - 110, 100);
+  text(m/1000, width/2, 50);
   if(m > timer){
     scene = 3;
     restartTimer = millis();    
@@ -132,6 +106,7 @@ void keyPressed(){
     scene = 1;
     if(gameOver == true){
       lives = 3;
+      score = 0;
       gameOver = false;
       loop(); 
     }
@@ -143,6 +118,7 @@ void keyPressed(){
     if(gameOver == true){
       //wingsSound.stop();
       lives = 3;
+      score = 0;
       gameOver = false;
       loop();     
     }

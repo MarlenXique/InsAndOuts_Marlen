@@ -14,8 +14,12 @@ void setup(){
   rectMode(CORNER);
   frameRate(40);
   
+  String portName = Serial.list()[2];
+  myPort = new Serial(this, portName, 9600);
+  myPort.bufferUntil ( '\n' );
+  
   restartTimer = millis();
-  checkingPort();
+  //checkingPort();
 
   bat = loadImage("bat.png");
   wingsSound = new SoundFile(this, "wings.mp3");
@@ -24,6 +28,11 @@ void setup(){
   for (int i = 0; i < run.length; i++){
     run[i] = loadImage ("player_run" + i + ".png");   
   }
+}
+
+void serialEvent(Serial myPort){
+  val1 = float(myPort.readStringUntil('\n'));
+    
 }
 
 void draw(){ 
@@ -44,15 +53,9 @@ void draw(){
   bush.resize(100, 0);
   
   backgroundFeatures();
-  
-  //if(myPort.available()> 0){
-  //  val1 = myPort.read();
-  //}
-  //    println(val1);
-  //    fill(255);
-  //    ellipse(mouseX, mouseY, val1, val1);
       
    if(scene == 1){
+     myPort.write('0');
  
      fill(#d4e8c3);
      stroke(#202924);
@@ -69,18 +72,27 @@ void draw(){
    
    }
    
-    else if(scene == 2){     
+    else if(scene == 2){       
+        myPort.write('0');
+
+      fill(255);
+      ellipse(mouseX, mouseY, val1, val1);
+      
       image(run[player], xPlayer, yPlayer, playerRadius,playerRadius);
       
       playerRun();
       milli();
       bat();
+
+      textSize(30);
+      text("lives = " + lives, width - 110, 50);  
       
       textSize(30);
-      text("lives = " + lives, width - 110, 50);       
+      text("Score = " + score, width/+ 100, 50); 
       Overlap();
     }
     else if(scene == 3){
+      myPort.write('1');
      fill(#d4e8c3);
      stroke(#202924);
      strokeWeight(30);
